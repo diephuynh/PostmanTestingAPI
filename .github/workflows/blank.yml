@@ -1,0 +1,17 @@
+name: FS Automated API tests using Postman CLI
+
+on: push
+
+jobs:
+  fs-auto-withdraw-api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key PMAK-6655f8befa2e300001a33d65-899eca7ebe896f043a6c18bb647a8606c2
+      - name: Run API tests
+        run: |
+          postman collection run "3169862-1c0d6f4b-e905-4736-81f5-918625bc447b"
